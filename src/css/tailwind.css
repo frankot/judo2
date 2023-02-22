@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: Lazer84;
+    font-weight: 400;
+    src: url(/fonts/Lazer84.ttf);
+  }
+  @font-face {
+    font-family: Inter-Regular;
+    font-weight: 400;
+    src: url(/fonts/Inter-Regular.ttf);
+  }
+  @font-face {
+    font-family: Inter-Light;
+    font-weight: 300;
+    src: url(/fonts/Inter-Light.ttf);
+  }
+  @font-face {
+    font-family: Inter-ExtraBold;
+    font-weight: 800;
+    src: url(/fonts/Inter-ExtraBold.ttf);
+  }
+  @font-face {
+    font-family: Inter-Bold;
+    font-weight: 600;
+    src: url(/fonts/Inter-Bold.ttf);
+  }
+}
+@layer components {
+  .call-butt {
+    @apply mb-4 inline-flex w-max items-center whitespace-nowrap rounded-md px-4 py-2 text-base text-cust-black shadow-sm md:mb-0 ;
+  }
+  .wrapper {
+    @apply relative ml-12 px-4 pt-16 font-inter-regular sm:ml-32 sm:px-6 sm:py-24 lg:px-8 lg:pt-20 lg:pb-24 xl:ml-44 2xl:ml-64;
+  }
+
+  .campCard {
+    background-size: 100%;
+    @apply w-full grow bg-center bg-no-repeat;
+  }
+  .wrapperHero {
+    @apply relative ml-12 px-4 pt-16 font-inter-regular sm:ml-32 sm:px-6 sm:py-24 lg:px-8 lg:pt-20 lg:pb-24 xl:ml-96;
+  }
+
+}

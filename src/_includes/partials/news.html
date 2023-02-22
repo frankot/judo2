@@ -1,0 +1,104 @@
+<div id="news">
+    <div x-data="carousel()" class="relative md:hidden">
+        <div class="relative h-96 w-full text-white sm:h-80">
+            <img class="absolute inset-0 h-96 w-full object-cover object-center sm:h-80" :src="images[selected]"
+                alt="mountains" />
+            <h1 x-text="title[selected]"
+                class="relative z-10 pl-4 pt-6 text-left font-inter-bold text-xl sm:pl-0 sm:pt-10 sm:text-center"></h1>
+            <div class="relative z-10 px-4 font-inter-regular tracking-wide sm:px-14 sm:py-5">
+                <h1 x-text="date[selected]" class="font-inter-bold"></h1>
+                <div x-text="text[selected]" class=""></div>
+                <a href="" class="mt-4 flex flex-shrink items-center text-cust-yellow">
+                    <span class="font-inter-bold text-sm">Czytaj</span>
+                    <svg class="ml-2 inline h-auto w-4" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+            </div>
+            <div class="absolute inset-0 bg-neutral-500 mix-blend-multiply"></div>
+
+            <button @click="if (selected > 0 ) {selected -= 1} else { selected = images.length - 1}"
+                class="group absolute inset-y-0 left-0 h-full w-8 cursor-pointer px-2 py-[25%] hover:bg-gray-500 hover:bg-opacity-75">
+                <span class="hidden text-gray-50 group-hover:block"> &larr; </span>
+            </button>
+            <button @click="if (selected < images.length - 1  ) {selected += 1} else { selected = 0 }"
+                class="group absolute inset-y-0 right-0 h-full w-8 cursor-pointer px-2 py-[25%] hover:bg-gray-500 hover:bg-opacity-75">
+                <span class="hidden text-gray-50 group-hover:block"> &rarr; </span>
+            </button>
+
+            <div class="absolute bottom-0 flex w-full justify-center space-x-2 p-4">
+                <template x-for="(image,index) in images" :key="index">
+                    <button @click="selected = index"
+                        :class="{'bg-gray-300': selected == index, 'bg-gray-500': selected != index}"
+                        class="h-2 w-2 rounded-full ring-2 ring-gray-300 hover:bg-gray-300"></button>
+                </template>
+            </div>
+        </div>
+    </div>
+
+    <div x-data="carousel()" class="relative hidden w-full md:flex md:h-80 xl:h-96">
+        <template x-for="item in data.date">
+            <div style="background-image: url('/images/news1.png')" class="campCard">
+                <div class="relative z-10 text-cust-white md:px-4 md:pt-8 xl:px-6 xl:pt-12">
+                    <div class="font-inter-bold md:text-xl xl:text-2xl">
+                        Informacje Obozowe MUSZYNA 2022
+                    </div>
+                    <div class="font-inter-bold">13.01.2022</div>
+                    <div class="xl:tracking-wide">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis
+                        dapibus nunc non mattis ipsum vitae nec ultrices. Enim, neque amet
+                        commodo aliquet volutpat auctor tortor pharetra.
+                    </div>
+                    <a href="#" class="flex items-center text-cust-yellow md:mt-1 xl:mt-2">
+                        <span class="font-inter-bold text-sm">Czytaj</span>
+                        <svg class="ml-2 h-auto w-4" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </template>
+        <div class="absolute inset-0 bg-neutral-500 mix-blend-multiply"></div>
+    </div>
+</div>
+<script>
+    const carousel = () => {
+        return {
+            selected: 0,
+            images: [
+                "images/news1.png",
+                "images/news2.png",
+                "images/news3.png",
+                "images/news4.png",
+            ],
+            title: [
+                "Informacje Obozowe MUSZYNA 2022",
+                "Obóz Sielpia 2021",
+                "Dzień dziecka i zakończenie roku Judo Neko 2021",
+                "Informacje Obozowe MUSZYNA 2023",
+            ],
+            text: [
+                "1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis dapibus nunc non mattis ipsum vitae nec ultrices. Enim, neque amet commodo aliquet volutpat auctor tortor pharetra. Sed lorem non purus tempus, laoreet neque fames. Metus, magna orci lorem enim malesuada sed vulputate....",
+                "2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis dapibus nunc non mattis ipsum vitae nec ultrices. Enim, neque amet commodo aliquet volutpat auctor tortor pharetra. Sed lorem non purus tempus, laoreet neque fames. Metus, magna orci lorem enim malesuada sed vulputate....",
+                "3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis dapibus nunc non mattis ipsum vitae nec ultrices. Enim, neque amet commodo aliquet volutpat auctor tortor pharetra. Sed lorem non purus tempus, laoreet neque fames. Metus, magna orci lorem enim malesuada sed vulputate....",
+                "4 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis dapibus nunc non mattis ipsum vitae nec ultrices. Enim, neque amet commodo aliquet volutpat auctor tortor pharetra. Sed lorem non purus tempus, laoreet neque fames. Metus, magna orci lorem enim malesuada sed vulputate....",
+            ],
+            date: ["13.01.2022", "13.01.2022", "13.01.2022", "13.01.2022"],
+        };
+    };
+    const data = {
+        title: [
+            "Informacje Obozowe MUSZYNA 2022",
+            "Obóz Sielpia 2021",
+            "Dzień dziecka i zakończenie roku Judo Neko 2021",
+            "Informacje Obozowe MUSZYNA 2023",
+        ],
+        date: ["13.01.2022", "13.01.2022", "13.01.2022", "13.01.2022"],
+    };
+</script>
